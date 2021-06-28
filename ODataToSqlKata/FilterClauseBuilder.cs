@@ -8,7 +8,7 @@ namespace ODataToSqlKata
 {
     public class FilterClauseBuilder : QueryNodeVisitor<Query>
     {
-        private const DateTimeStyles ValidDateTimeSales = DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal | DateTimeStyles.AllowWhiteSpaces;
+        private const DateTimeStyles ValidDateTimeStyles = DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal | DateTimeStyles.AllowWhiteSpaces;
         private Query _query;
 
         public FilterClauseBuilder(Query query)
@@ -163,7 +163,7 @@ namespace ODataToSqlKata
 
         private static bool ConvertToDateTimeUTC(string dateTimeString, out DateTime? dateTime)
         {
-            if (DateTime.TryParse(dateTimeString, CultureInfo.InvariantCulture.DateTimeFormat, ValidDateTimeSales, out var dateTimeValue))
+            if (DateTime.TryParse(dateTimeString, CultureInfo.InvariantCulture.DateTimeFormat, ValidDateTimeStyles, out var dateTimeValue))
             {
                 dateTime = dateTimeValue;
                 return true;
